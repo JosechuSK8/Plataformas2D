@@ -46,5 +46,5 @@ public class player : MonoBehaviour {
 		void OnTriggerStay2D(Collider2D objeto) {
 		if (objeto.tag == "Suelo") {
 		}
-
+	}
 }
