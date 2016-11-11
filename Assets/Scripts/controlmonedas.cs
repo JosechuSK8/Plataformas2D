@@ -8,7 +8,8 @@ public class controlmonedas : MonoBehaviour {
 
 	void Start(){
 		texto = GetComponent<Text> ();
-
+		resetear ();
+		//suma_monedas (11);
 	}
 
 	public void suma_monedas(int cantidad){
@@ -22,6 +23,12 @@ public class controlmonedas : MonoBehaviour {
 		texto.text = monedas.ToString ();
 
 		Debug.Log ("Monedas: " + monedas);
+
+	}
+
+	public void resetear(){
+		monedas = 0;
+		texto.text = monedas.ToString ();
 
 	}
 }

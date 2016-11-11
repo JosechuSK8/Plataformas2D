@@ -3,32 +3,28 @@ using System.Collections;
 
 public class moneda : MonoBehaviour {
 	private Rigidbody2D rb;
+	GameObject txt_moneda;
+	controlmonedas ctrl_moneda;
 
 
 
-	void start () {
+	void Start () {
 		Destroy (gameObject,3);
 		rb = GetComponent<Rigidbody2D> ();
 		rb.AddForce (new Vector2 (-100, 100));
-	}
-
-	void OnTriggerEnter2D(Collider2D col){
-		Debug.Log ("Ha tocado");
-		Destroy (gameObject);
+		txt_moneda = GameObject.Find ("texto_moneda");
+		ctrl_moneda =txt_moneda.GetComponent<controlmonedas> ();
 
 	}
 
-		void OnTriggerExit2D(Collider2D col){
-			Debug.Log ("Han dejado de tocarme");
-		}
 
-		void OnTriggerStay2D(Collider2D col ){
-		Debug.Log ("me estan tocando me siento incomodo");
-		}
 		
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Player") {
+			ctrl_moneda.suma_monedas (5);
 			Destroy (gameObject);
 		}
 	}
+		
+
 }
