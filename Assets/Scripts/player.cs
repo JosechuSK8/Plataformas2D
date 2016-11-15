@@ -9,15 +9,16 @@ public class player : MonoBehaviour {
 	public bool tocando_suelo = false;
 	private Animator animator;
 	private Rigidbody2D rb;
-
+	private GameControlScript gcs;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		gcs = GameObject.Find ("GameControl").GetComponent<GameControlScript> ();
 				}
-	
-	// Update is called once per frame
+			
+
 	void Update () {
 
 
@@ -44,7 +45,16 @@ public class player : MonoBehaviour {
 
 		}
 		void OnTriggerStay2D(Collider2D objeto) {
-		if (objeto.tag == "Suelo") {
+			if (objeto.tag == "Suelo") {
+			}
 		}
+		
+
+
+		void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "muerte") {
+			gcs.respawn ();
+				}
+			}
 	}
-}
+
