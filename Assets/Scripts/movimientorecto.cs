@@ -21,5 +21,13 @@ public class movimientorecto : MonoBehaviour {
 		plataforma.transform.position = Vector3.MoveTowards (plataforma.transform.position,
 			destino,
 			velocidad * Time.deltaTime);
+
+		if (plataforma.transform.position == fin.position) {
+			destino = inicio.position;
+		}
+
+		if (plataforma.transform.position == inicio.position) {
+			destino = fin.position;
+		}
 	}
 }
