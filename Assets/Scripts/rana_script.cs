@@ -11,7 +11,7 @@ public class rana_script : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D objeto){
 		if (objeto.tag == "Player") {
-			animacion.SetTrigger ("Salto");
+			//animacion.SetTrigger ("Salto");
 		}
 	}
 }
