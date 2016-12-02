@@ -8,14 +8,22 @@ public class player : MonoBehaviour {
 	public float Jump = 400f;
 	public bool tocando_suelo = false;
 	public GameObject particulas_muerte;
+
+	public AudioClip sonido_salto;
+	public AudioClip sonido_herir;
+	public AudioClip sonido_moneda;
+
+
 	private Animator animator;
 	private Rigidbody2D rb;
 	private GameControlScript gcs;
+	private AudioSource audio; 
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		audio = GetComponent<AudioSource> ();
 		gcs = GameObject.Find ("GameControl").GetComponent<GameControlScript> ();
 				}
 			
@@ -54,9 +62,13 @@ public class player : MonoBehaviour {
 
 		void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "muerte") {
-			//gcs.respawn ();
+			gcs.respawn ();
 			Instantiate(particulas_muerte, transform.position, transform.rotation);
 
+		}
+
+		if (col.gameObject.tag == "moneda") {
+			audio.Play ();
 		}
 
 	}

@@ -7,7 +7,6 @@ public class moneda : MonoBehaviour {
 	controlmonedas ctrl_moneda;
 
 
-
 	void Start () {
 		Destroy (gameObject,3);
 		rb = GetComponent<Rigidbody2D> ();
