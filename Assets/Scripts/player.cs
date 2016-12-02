@@ -62,13 +62,20 @@ public class player : MonoBehaviour {
 
 		void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "muerte") {
-			gcs.respawn ();
+			Invoke ("muerte", 1)
+		
+
+			audio.PlayOneShot (sonido_herir);
 			Instantiate(particulas_muerte, transform.position, transform.rotation);
 
 		}
 
 		if (col.gameObject.tag == "moneda") {
 			audio.Play ();
+		}
+
+		void muerte(){
+			gcs.respawn
 		}
 
 	}
